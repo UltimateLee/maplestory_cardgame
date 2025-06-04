@@ -15,10 +15,16 @@ const Board = styled.div`
       case 12: return '4/3';  // 3행 4열
       case 16: return '1/1';  // 4행 4열
       case 20: return '5/4';  // 4행 5열
-      case 25: return '1/1';  // 5행 5열
+      case 24: return '3/2';  // 4행 6열
       default: return '1/1';
     }
   }};
+
+  @media (max-width: 768px) {
+    width: 95vw;
+    gap: 8px;
+    padding: 8px;
+  }
 `;
 
 const Card = styled(motion.div)`
@@ -32,6 +38,12 @@ const Card = styled(motion.div)`
     display: block;
     padding-top: 100%;
   }
+
+  @media (max-width: 768px) {
+    &:before {
+      padding-top: 100%; /* 정사각형 비율 유지 */
+    }
+  }
 `;
 
 const CardInner = styled(motion.div)`
@@ -41,8 +53,12 @@ const CardInner = styled(motion.div)`
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    border-radius: 8px;
+  }
 `;
 
 const CardFront = styled(motion.div)`
@@ -51,12 +67,17 @@ const CardFront = styled(motion.div)`
   height: 100%;
   backface-visibility: hidden;
   background: linear-gradient(135deg, #6c5ce7 0%, #a363d9 100%);
-  border-radius: 8px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: clamp(1.2rem, 3vw, 1.8rem);
   color: white;
+
+  @media (max-width: 768px) {
+    border-radius: 8px;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+  }
 `;
 
 const CardBack = styled(motion.div)`
@@ -65,7 +86,7 @@ const CardBack = styled(motion.div)`
   height: 100%;
   backface-visibility: hidden;
   transform: rotateY(180deg);
-  border-radius: 8px;
+  border-radius: 12px;
   background: white;
   display: flex;
   align-items: center;
@@ -73,9 +94,19 @@ const CardBack = styled(motion.div)`
   padding: 5px;
 
   img {
-    width: 75%;
-    height: 75%;
+    width: 80%;
+    height: 80%;
     object-fit: contain;
+  }
+
+  @media (max-width: 768px) {
+    border-radius: 8px;
+    padding: 8px;
+
+    img {
+      width: 85%;
+      height: 85%;
+    }
   }
 `;
 

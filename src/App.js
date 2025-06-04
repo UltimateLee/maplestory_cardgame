@@ -66,6 +66,13 @@ const Title = styled.h1`
   line-height: 1;
   text-align: center;
   white-space: nowrap;
+  gap: 10px;
+
+  img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+  }
 `;
 
 const TimerWrapper = styled.div`
@@ -158,7 +165,10 @@ function App() {
   return (
     <AppContainer>
       <GameHeader>
-        <Title>메이플스토리 카드 매칭 게임</Title>
+        <Title>
+          <img src="/images/Mob_Orange_Mushroom.webp" alt="Orange Mushroom" />
+          메이플스토리 카드 매칭 게임
+        </Title>
         {gameStarted && (
           <TimerWrapper>
             <Timer 
