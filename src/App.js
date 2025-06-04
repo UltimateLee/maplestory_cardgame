@@ -41,6 +41,8 @@ const GameHeader = styled.div`
   width: 100%;
   gap: 15px;
   margin-bottom: 15px;
+  position: relative;
+  z-index: 2;
 `;
 
 const GameContainer = styled.div`
@@ -51,6 +53,12 @@ const GameContainer = styled.div`
   flex: 1;
   padding: 0;
   max-height: calc(100vh - 120px);
+  position: relative;
+  
+  @media (max-width: 768px) {
+    max-height: none;
+    padding-bottom: 20px;
+  }
 `;
 
 const Title = styled.h1`
@@ -80,6 +88,15 @@ const TimerWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const RankingWrapper = styled.div`
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 `;
 
 function App() {
@@ -187,11 +204,13 @@ function App() {
             onGameComplete={() => handleGameComplete(time)}
           />
           {nickname && (
-            <Ranking 
-              time={finalTime} 
-              difficulty={difficulty} 
-              nickname={nickname} 
-            />
+            <RankingWrapper>
+              <Ranking 
+                time={finalTime} 
+                difficulty={difficulty} 
+                nickname={nickname} 
+              />
+            </RankingWrapper>
           )}
         </GameContainer>
       )}

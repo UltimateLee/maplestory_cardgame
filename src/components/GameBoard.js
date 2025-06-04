@@ -9,6 +9,10 @@ const Board = styled.div`
   margin: 0 auto;
   padding: 5px;
   height: min-content;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   aspect-ratio: ${props => {
     switch(props.cardCount) {
       case 8: return '2/1';   // 2행 4열
@@ -21,9 +25,14 @@ const Board = styled.div`
   }};
 
   @media (max-width: 768px) {
-    width: 95vw;
+    width: 90vw;
     gap: 8px;
     padding: 8px;
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    margin: 20px auto;
   }
 `;
 
