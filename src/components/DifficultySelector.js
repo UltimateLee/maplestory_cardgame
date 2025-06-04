@@ -9,35 +9,54 @@ const Container = styled.div`
   gap: 20px;
   width: 100%;
   max-width: 800px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
+  -webkit-overflow-scrolling: touch;
 `;
 
 const Title = styled.h2`
   color: #4834d4;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  text-align: center;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
 `;
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 `;
 
 const DifficultyCard = styled(motion.div)`
   background: white;
   border-radius: 15px;
-  padding: 20px;
+  padding: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
+  min-height: 150px;
+
+  @media (max-width: 480px) {
+    min-height: auto;
+    padding: 12px;
+  }
 `;
 
 const DifficultyButton = styled(motion.button)`
-  padding: 15px 30px;
-  font-size: 1.2rem;
+  padding: 12px 20px;
+  font-size: clamp(1rem, 3vw, 1.2rem);
   border: none;
   border-radius: 10px;
   background: linear-gradient(135deg, #6c5ce7 0%, #a363d9 100%);
@@ -49,17 +68,24 @@ const DifficultyButton = styled(motion.button)`
   &:hover {
     background: linear-gradient(135deg, #a363d9 0%, #6c5ce7 100%);
   }
+
+  @media (max-width: 480px) {
+    padding: 10px 15px;
+  }
 `;
 
 const RankingPreview = styled.div`
-  margin-top: 10px;
+  margin-top: 5px;
   position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 `;
 
 const RankingTitle = styled.h3`
   color: #4834d4;
-  font-size: 1rem;
-  margin-bottom: 10px;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -91,21 +117,28 @@ const RankingList = styled(motion.ul)`
   list-style: none;
   padding: 0;
   margin: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  max-height: ${props => props.isExpanded ? '200px' : '108px'};
+  -webkit-overflow-scrolling: touch;
 `;
 
 const RankingItem = styled.li`
   display: grid;
   grid-template-columns: 30px 1fr 80px;
-  gap: 10px;
-  padding: 8px;
-  font-size: 0.9rem;
+  gap: 8px;
+  padding: 6px;
+  font-size: clamp(0.8rem, 2.5vw, 0.9rem);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   color: #2d3436;
   align-items: center;
 
   &:last-child {
     border-bottom: none;
+  }
+
+  @media (max-width: 480px) {
+    padding: 5px;
+    gap: 5px;
   }
 `;
 
