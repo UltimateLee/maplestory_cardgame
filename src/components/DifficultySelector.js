@@ -14,6 +14,17 @@ const Container = styled.div`
   overflow-y: auto;
   max-height: calc(100vh - 100px);
   -webkit-overflow-scrolling: touch;
+
+  /* Chrome, Safari, Edge에서 스크롤바 숨기기 */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Firefox에서 스크롤바 숨기기 */
+  scrollbar-width: none;
+
+  /* IE에서 스크롤바 숨기기 */
+  -ms-overflow-style: none;
 `;
 
 const Title = styled.h2`
@@ -120,6 +131,17 @@ const RankingList = styled(motion.ul)`
   overflow-y: auto;
   max-height: ${props => props.isExpanded ? '200px' : '108px'};
   -webkit-overflow-scrolling: touch;
+
+  /* Chrome, Safari, Edge에서 스크롤바 숨기기 */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Firefox에서 스크롤바 숨기기 */
+  scrollbar-width: none;
+
+  /* IE에서 스크롤바 숨기기 */
+  -ms-overflow-style: none;
 `;
 
 const RankingItem = styled.li`
